@@ -1,27 +1,40 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+_Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
 
 ---
 
-# svelte app
+# todo-list svelte app with typescript
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+This is a project template for [Svelte](https://svelte.dev) apps. This project use Typescript from start
 
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+npx degit sveltejs/template <app-name>
+cd <app-name>
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+_Note that you will need to have [Node.js](https://nodejs.org) installed._
 
+## Using TypeScript
+
+This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
+
+```bash
+node scripts/setupTypeScript.js
+```
+
+Or remove the script via:
+
+```bash
+rm scripts/setupTypeScript.js
+```
 
 ## Get started
 
 Install the dependencies...
 
 ```bash
-cd svelte-app
+cd <app-name>
 npm install
 ```
 
@@ -47,29 +60,14 @@ npm run build
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
-
 ## Single-page app mode
 
 By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for _any_ path. You can make it so by editing the `"start"` command in package.json:
 
 ```js
 "start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
 ```
 
 ## Deploying to the web
@@ -102,4 +100,41 @@ Then, from within your project folder:
 ```bash
 npm run build
 surge public my-project.surge.sh
+```
+
+## Notes when developing with Typescript
+
+In order to use Typescript features(anotations) in your svelte components
+you'll need to add the `lang="ts"` attribute to the `<script>` tag
+
+```svelte
+<script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
+  const dispatch = createEventDispatcher();
+  export let todo: TodoProp;
+</script>
+
+```
+
+### export/import type/interface from `.svelte` files
+
+Export:
+
+```svelte
+<script context="module" lang="ts">
+  export type TodoProp = {
+    id: number;
+    text: string;
+    done: boolean;
+  };
+</script>
+```
+
+Import:
+
+```svelte
+<script lang="ts" context="module">
+  import type { TodoProp } from "./Todo.svelte";
+</script>
 ```
