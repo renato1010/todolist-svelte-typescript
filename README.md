@@ -2,7 +2,7 @@ _Looking for a shareable component template? Go here --> [sveltejs/component-tem
 
 ---
 
-# todo-list svelte app with typescript
+# Instructions to create an app like this, todo-list svelte app with typescript
 
 This is a project template for [Svelte](https://svelte.dev) apps. This project use Typescript from start
 
@@ -28,6 +28,10 @@ Or remove the script via:
 ```bash
 rm scripts/setupTypeScript.js
 ```
+
+## Copy .svelte files
+
+Keep the file structure and copy [Todo](src/components/Todo.svelte) and [TodoList](src/components/TodoList.svelte) components to your project
 
 ## Get started
 
