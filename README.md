@@ -9,8 +9,8 @@ This is a project template for [Svelte](https://svelte.dev) apps. This project u
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit sveltejs/template <app-name>
-cd <app-name>
+npx degit sveltejs/template todo-list
+cd todo-list
 ```
 
 _Note that you will need to have [Node.js](https://nodejs.org) installed._
@@ -34,7 +34,7 @@ rm scripts/setupTypeScript.js
 Install the dependencies...
 
 ```bash
-cd <app-name>
+cd todo-list
 npm install
 ```
 
